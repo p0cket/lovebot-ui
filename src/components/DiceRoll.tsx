@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material"
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from "lucide-react"
+import { motion } from "framer-motion"
 
 type DiceSize = "small" | "medium" | "large"
 
@@ -73,23 +74,29 @@ const DiceRoll: React.FC<DiceRollProps> = ({ size = "medium" }) => {
           <span className="text-green-800">Roller</span>
         </Typography>
       </CardHeader>
-      <CardContent className="flex flex-col items-center gap-4 p-6 bg-gradient-to-b from-gray-50 to-white">
-        <div
-          className={`transition-transform duration-100 ${
-            isRolling ? "animate-bounce" : ""
-          } p-4 rounded-lg bg-gray-100 hover:bg-gray-200`}
-        >
-          {diceIcons[currentValue]}
-        </div>
-        <Button
-          onClick={rollDice}
-          disabled={isRolling}
-          variant="contained"
-          fullWidth
-        >
-          {isRolling ? "Rolling..." : "Roll Dice"}
-        </Button>
-      </CardContent>
+    <CardContent className="flex flex-col items-center gap-4 p-6 bg-gradient-to-b from-gray-50 to-white">
+      <motion.div
+        className="p-4 rounded-lg bg-gray-100 hover:bg-gray-200"
+        animate={isRolling ? {
+        y: [0, -20, 0],
+        } : {}}
+        transition={{
+        duration: 0.6,
+        repeat: Infinity,
+        repeatType: "loop"
+        }}
+      >
+        {diceIcons[currentValue]}
+      </motion.div>
+      <Button
+        onClick={rollDice}
+        disabled={isRolling}
+        variant="contained"
+        fullWidth
+      >
+        {isRolling ? "Rolling..." : "Roll Dice"}
+      </Button>
+    </CardContent>
     </Card>
   )
 }
