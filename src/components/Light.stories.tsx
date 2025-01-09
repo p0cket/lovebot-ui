@@ -5,7 +5,7 @@ const meta: Meta<typeof Light> = {
   title: "Light",
   component: Light,
   //autodocs
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
   argTypes: {
     variant: {
       //   control: {

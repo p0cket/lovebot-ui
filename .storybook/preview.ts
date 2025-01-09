@@ -1,4 +1,7 @@
-import 'tailwindcss/tailwind.css'
+import { withPerformance } from "storybook-addon-performance"
+
+export const decorators = [withPerformance]
+import "tailwindcss/tailwind.css"
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
